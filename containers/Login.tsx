@@ -56,7 +56,7 @@ export const Login : NextPage<LoginProps> = ({setAccessToken}) => {
 
                 <div className="input">
                     <img src="lock.svg" alt="Senha"/>
-                    <input placeholder="Senha" type="password" value={password} onChange={e=>e.target.value} />
+                    <input placeholder="Senha" type="password" value={password} onChange={e=>setPassword(e.target.value)} />
                 </div>
 
                 <button onClick={doLogin} disabled={loading}> {loading ? "......Carregando": "Login"}</button>
