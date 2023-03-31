@@ -1,0 +1,58 @@
+@import './config.scss';
+
+.container-header {
+    display: flex;
+    width:  100%;
+    align-items: center;
+    padding: 0 24;
+    justify-content: space-between;
+    border-bottom: 1px solid;
+
+}
+
+.logo{
+    width: 89px;
+
+}
+
+button{
+    display: none;
+}
+
+div {
+    span{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+        color: $primaryColor;
+        margin-right: 8px;
+
+    }
+
+}
+
+@media screen and (min-width: $mediaQueryDesktop) {
+    padding: 28px 100px;
+
+    .logo{
+        width: 118px;
+    }
+    button {
+        display: flex;
+        align-items: center;
+        height:  45px;
+        margin-right: 8px;
+
+    }
+    
+    div {
+        span {
+            font-style: normal;
+            font-weight: 400;
+        }
+    }
+}
+
+
+
