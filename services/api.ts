@@ -1,24 +1,24 @@
-import axios from "axios";
-import axiox, {type Method} from "axios"
+import axios, {type Method} from "axios";
+import { url } from "inspector";
 
-export const executeRequest = (endpoint: string, method: Method, body? : any) => {
-    const headers = {'Content-Type' : 'application/json'} as any
+export const executeRequest = (endpoint: string, method: Method, body? : any) =>{
+
+    const headers = { 'Content-Type' : 'application/json'} as any;
 
     const accessToken = localStorage.getItem('accessToken');
-    if (accessToken){
+
+    if(accessToken) {
         headers['Authorization'] = 'Bearer ' + accessToken;
     }
 
-    const URL = 'http://localhost:3000/api' + endpoint
-
-
+    const URL = 'http://localhost:3000/api/' + endpoint;
 
     return axios.request({
         url: URL,
         method,
-        data: body? body: '',
+        data : body ? body : '',
         headers,
-        timeout: 300000
-    })
-    
+        timeout: 30000
+    });
+
 }
