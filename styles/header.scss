@@ -20,31 +20,46 @@
         width: 92px;
     }
 
-    span {
-        color: $primaryColor;
-        margin-right: 10px;
-    }
+    .mobile{
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-    img {
-        width: 30px;
+        span {
+            color: $primaryColor;
+            margin-right: 10px;
+        }
+
+        img {
+            width: 30px;
+        }
     }
-    
 
     @media screen and (min-width: $mediaQueryDesktop) {
         padding: 40px 80px;
         
+        .mobile{
+            display: none;
+        }
+
         .logo{
             width: 130px;
         }
 
-        span {
-            font-size: 20px;
-            color: $primaryColor;
-            margin-right: 20px;
-        }
-
-        img {
-            cursor: pointer;
+        .desktop{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+    
+            span {
+                font-size: 20px;
+                color: $primaryColor;
+                margin-right: 20px;
+            }
+    
+            img {
+                cursor: pointer;
+            }
         }
 
         button{

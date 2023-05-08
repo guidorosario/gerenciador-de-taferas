@@ -1,27 +1,35 @@
-import moment from 'moment';
-import type { NextPage } from 'next';
-import { Task } from '../types/Task';
+/* eslint-disable @next/next/no-img-element */
+import { Task } from "@/types/Task"
+import moment from "moment"
+import { NextPage } from "next"
 
 type ItemProps = {
     task: Task,
-    endTask(task: Task): void
+    selectTask(t:Task) : void
 }
 
-export const Item: NextPage<ItemProps> = ({ task, endTask }) => {
+export const Item : NextPage<ItemProps> = ({task, selectTask}) => {
+    const isTaskFinished = task?.finishDate || false;
 
-    const isTaskFinished = task.finishDate || false;
+    const getDataText = () => {
+        if(isTaskFinished){
+            return `Concluída em: ${moment(task.finishDate).format('DD/MM/yyyy')}`
+        }
+
+        return `Conclusão em: ${moment(task.finishPrevisionDate).format('DD/MM/yyyy')}`
+    }
 
     return (
-        <div className={'container-item' + (isTaskFinished ? '' : ' active')}>
-            <img onClick={() => endTask(task)} src={isTaskFinished ? 'checked.svg' : 'not-checked.svg'} alt={isTaskFinished ? 'Tarefa em aberto' : 'Tarefa concluída'} />
+        <div className={'container-item ' + (isTaskFinished ? '' : 'active')}
+            onClick={() => isTaskFinished ? null : selectTask(task)}>
+            <img 
+                src={isTaskFinished ? 'checked.svg' : 'not-checked.svg'}
+                alt={isTaskFinished ? 'Tarefa concluída' : 'Tarefa em aberto'}
+            />
             <div>
                 <p className={isTaskFinished ? 'finished' : ''}>{task.name}</p>
-                <span>{
-                    isTaskFinished ?
-                        "Concluído em: " + moment(task.finishDate).format('DD/MM/yyyy') :
-                        "Conclusão em: " + moment(task.finishPrevisionDate).format('DD/MM/yyyy')
-                }</span>
+                <span>{getDataText()}</span>
             </div>
         </div>
-    );
+    )
 }
